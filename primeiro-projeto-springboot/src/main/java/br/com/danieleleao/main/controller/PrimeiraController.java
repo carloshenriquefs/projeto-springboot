@@ -1,5 +1,7 @@
 package br.com.danieleleao.main.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -36,6 +38,21 @@ public class PrimeiraController {
     @PostMapping("/metodoComListHeaders")
     public String metodoComListHeaders(@RequestHeader Map<String, String> headers) {
         return "metodoComListHeaders " + headers.entrySet();
+    }
+
+    @GetMapping("/metodoResponseEntity")
+    public ResponseEntity<Object> metodoResponseEntity() {
+        return ResponseEntity.status(400).body("Mensagem de Erro");
+    }
+
+    @GetMapping("/metodoResponseEntity1/{id}")
+    public ResponseEntity<Object> metodoResponseEntity1(@PathVariable Long id) {
+        var usuario = new Usuario("danieleao");
+
+        if (id > 5) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
+        }
+        return ResponseEntity.badRequest().body("Número menor que 5");
     }
 
     record Usuario(String username) {
