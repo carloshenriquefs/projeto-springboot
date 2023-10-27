@@ -23,4 +23,11 @@ public class PrimeiraController {
         return "O paramêtro com metodoComQueryParams é: " + allParams.entrySet();
     }
 
+    @PostMapping("/metodoComBodyParams")
+    public String metodoComBodyParams(@RequestBody Usuario usuario) {
+        return "metodoComBodyParams " + usuario.username;
+    }
+
+    record Usuario(String username) {}
+
 }
