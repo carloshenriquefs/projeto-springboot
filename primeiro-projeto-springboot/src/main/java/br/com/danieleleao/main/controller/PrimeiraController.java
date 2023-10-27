@@ -1,4 +1,4 @@
-package br.com.danieleleao.main;
+package br.com.danieleleao.main.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
